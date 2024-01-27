@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    text-transform: capitalize;
+}
+
+:root {
+    --blue: #0663a2;
+    --light-blue: #69ffd4;
+    --gradient: linear-gradient(45deg, var(--blue), var(--light-blue));
+}
+
+html {
+    font-size: 62.5%;
+    background: #171717; /* Изменен цвет фона на #C0C0C0 */
+}
+
+section {
+    min-height: 100vh;
+    padding: 0 9%;
+    padding-top: 8rem;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: none;
+    box-shadow: var(--box-shadow);
+    padding: 2rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+header .navbar a {
+    font-size: 1.7rem;
+    color: #fff;
+    transition: 0.5s;
+    margin: 0 2rem; /* Добавлен отступ между ссылками */
+}
+
+header .navbar a:hover {
+    color: var(--light-blue)
+}
+
+header input {
+    display: none;
+}
+
+header label {
+    font-size: 2.1rem;
+    color: var(--blue);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+}
+
+header .logo {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+    text-transform: none;
+}
+
+header .logo:hover {
+    transform: scale(1.2);
+    text-transform: none;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: url('img/background.png') center/cover; /* Фон из /img/background.png */
+    filter: blur(2px); /* Размытие фона */
+}
+
+
+.home .img img {
+    width: 35vw;
+    animation: animateBg 3s linear infinite;
+}
+
+@keyframes animateBg {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2.5rem);
+    }
+}
+
+.home .content h2 {
+    font-size: 6.0rem;
+    color: #fff; /* Белый цвет текста */
+    text-transform: none;
+}
+
+.home .content h2 span {
+    color: var(--light-blue); /* Более яркий синеватый цвет для "minecraft" */
+    text-transform: lowercase;
+}
+
+.home .content p {
+    font-size: 2.0rem;
+    color: #fff; /* Белый цвет текста */
+    padding: 1rem 0;
+    text-transform: none;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 1rem 4rem;
+    background: var(--gradient);
+    border-radius: 3rem;
+    font-size: 1.8rem;
+    color: #fff;
+    box-shadow: var(--box-shadow);
+    margin-top: 2rem;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+
+/* media queries */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    section {
+        padding: 0 3%;
+        padding-top: 8rem;
+    }
+}
+
+@media (max-width: 770px) {
+    header label {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: none;
+        padding: 1rem 2rem;
+        border-top: none; /* Убрана верхняя граница */
+        box-shadow: none; /* Убрана тень */
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    
+
+    header .navbar a {
+        display: block;
+        margin: 2rem 0;
+        font-size: 1.8rem;
+    }
+
+    header input:checked ~ .navbar {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    .home {
+        flex-flow: column-reverse;
+        padding-top: 7rem;
+    }
+
+    .home .img img {
+        width: 100%;
+    }
+
+    .home .content h2 {
+        font-size: 3.5rem;
+    }
+
+    .home .content p {
+        font-size: 1.5rem;
+    }
+
+    .home .content .btn {
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: 450px) {
+        html {
+            font-size: 50%;
+        }
+    }
+}
